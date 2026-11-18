@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Business // Hub Stratégique</title>
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles Brevo Form requis -->
+    <style>
+        @font-face {
+            font-display: block;
+            font-family: Roboto;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2");
+        }
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 600;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2");
+        }
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 700;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2");
+        }
+        :where(.sib-form-message-panel) { display: none; }
+        :where(.sib-form-message-panel .sib-notification_icon) { width: 20px; height: 20px; }
+        #sib-container input::placeholder, #sib-container textarea::placeholder {
+            font-family: 'Roboto', Helvetica, sans-serif;
+            text-align: left;
+            color: #8fa3c7;
+        }
+        #sib-container a { text-decoration: underline; color: #00f0ff; }
+        
+        /* --- STYLES FUTURISTES / HI-TECH --- */
+        .sib-form {
+            background: radial-gradient(circle at center, #0f172a 0%, #030712 100%) !important;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        #sib-container {
+            background: rgba(13, 19, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.3) !important;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15), 0 0 50px rgba(168, 85, 247, 0.1) !important;
+            border-radius: 8px !important;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        #sib-container .sib-form-block p {
+            color: #ffffff !important;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        #sib-container input.input {
+            background-color: rgba(3, 7, 18, 0.8) !important;
+            border: 1px solid rgba(168, 85, 247, 0.4) !important;
+            color: #00f0ff !important;
+            border-radius: 4px !important;
+            padding: 12px !important;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        #sib-container input.input:focus {
+            border-color: #00f0ff !important;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+            outline: none;
+        }
+        .sib-form-block_button {
+            background: linear-gradient(135deg, #a855f7 0%, #00f0ff 100%) !important;
+            color: #030712 !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.5px;
+            border-radius: 4px !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            padding: 14px !important;
+            border: none !important;
+        }
+        .sib-form-block_button:hover {
+            background: linear-gradient(135deg, #00ff88 0%, #00f0ff 100%) !important;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+        }
+        .entry_label { color: #e2e8f0 !important; }
+        .entry_specification { color: #94a3b8 !important; }
+    </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+    <!-- Styles Globaux du Site -->
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(13, 19, 33, 0.7);
+            --neon-blue: #00f0ff;
+            --neon-purple: #a855f7;
+            --neon-green: #00ff88;
+            --light-yellow: #fef08a;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 40%);
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+        }
+
+        .btn-contact-nav {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+            padding: 8px 18px;
+            border-radius: 4px;
+            color: var(--bg-color) !important;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-contact-nav:hover {
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+        }
+
+        /* --- PAGES LAYOUT --- */
+        .page {
+            display: none;
+            padding: 120px 5% 60px 5%;
+            min-height: 100vh;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PAGE ACCUEIL --- *//* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--neon-blue), var(--light-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        /* Grille des 5 Business */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 50px 0 30px 0;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .business-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .business-card h3 {
+            color: var(--light-yellow);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .business-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 6px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .faq-question span {
+            color: var(--neon-green);
+        }
+
+        .faq-answer {
+            padding: 0 20px 18px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- PAGE ARTICLES --- */
+        .articles-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .article-card-preview {
+            background: var(--card-bg);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .article-card-preview h2 {
+            color: var(--neon-blue);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .article-card-preview .article-excerpt {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn-read-more {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-read-more:hover {
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Modal / Vue détaillée article */
+        .article-detail-view {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 20px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+        }
+
+        .article-detail-view.active {
+            display: block;
+        }
+
+        .article-content {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            white-space: pre-line;
+        }
+
+        .btn-download-pdf {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            color: var(--bg-color);
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-download-pdf:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
+        }
+
+        .btn-back-list {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-back-list:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        /* --- PAGE À PROPOS --- */
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-container h2 {
+            color: var(--light-yellow);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .about-container p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* --- MODAL CONTACT / RÉSEAUX --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0d1321;
+            border: 1px solid var(--neon-purple);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+
+        .social-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(3, 7, 18, 0.9);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">NEXUS // BUSINESS</div>
+        <nav>
+            <ul>
+                <li><a onclick="switchPage('accueil')" class="nav-link active" id="link-accueil">Accueil</a></li>
+                <li><a onclick="switchPage('articles')" class="nav-link" id="link-articles">Articles</a></li>
+                <li><a onclick="switchPage('apropos')" class="nav-link" id="link-apropos">À Propos</a></li>
+            </ul>
+        </nav>
+        <button class="btn-contact-nav" onclick="openContactModal()">Contact & Réseaux</button>
+    </header>
+
+    <!-- ================= PAGE ACCUEIL ================= -->
+    <div id="page-accueil" class="page active">
+        <section class="hero">
+            <h1>Dominez l'Ère du <span>Business en Ligne</span></h1>
+            <p>Accédez aux stratégies de pointe, automatisez vos revenus et structurez votre empire numérique.</p>
+        </section>
+
+        <!-- 5 Business / Méthodes clés -->
+        <h2 class="section-title">5 Piliers Stratégiques</h2>
+        <div class="business-grid">
+            <div class="business-card">
+                <h3>1. Le Freelancing Haut de Gamme</h3>
+                <p>Monétisez une expertise ciblée à forte valeur ajoutée en adoptant la bonne tarification (TJM) et un positionnement de spécialiste.</p>
+            </div>
+            <div class="business-card">
+                <h3>2. Vente d'Infoproduits & Formations</h3>
+                <p>Créez et vendez du contenu dématérialisé (e-books, masterclasses) pour un modèle économique scalable à marges élevées.</p>
+            </div>
+            <div class="business-card">
+                <h3>3. E-commerce & Tunnels de Vente</h3>
+                <p>Optimisez l'expérience utilisateur et réduisez les frictions de paiement pour convertir un trafic ciblé en acheteurs fidèles.</p>
+            </div>
+            <div class="business-card">
+                <h3>4. Personal Branding sur les Réseaux</h3>
+                <p>Positionnez-vous en tant qu'autorité incontournable sur LinkedIn, TikTok et YouTube pour générer un flux constant de clients organiques.</p>
+            </div>
+            <div class="business-card">
+                <h3>5. Automatisation & IA Marketing</h3>
+                <p>Utilisez des systèmes intelligents et des tunnels de capture d'e-mails (Brevo, Chariow) pour faire tourner votre business en continu.</p>
+            </div>
+        </div>
+
+        <!-- Espace Formulaire Brevo (Accueil) -->
+        <div style="margin: 60px 0;">
+            <h2 class="section-title">Rejoindre le Réseau</h2>
+            <div class="sib-form" style="text-align: center;">
+                <div id="sib-form-container" class="sib-form-container" style="max-width: 540px;">
+                    <div id="error-message" class="sib-form-message-panel" style="font-family:'Roboto', Helvetica, sans-serif; font-size:16px; text-align:left; color:#ff4949; background-color:rgba(255,73,73,0.1); border-color:#ff4949; border-radius:3px;">
+                        <div class="sib-form-message-panel_text sib-form-message-panel_text--center">
+                            <span class="sib-form-message-panel_inner-text">Nous n'avons pas pu confirmer votre inscription.</span>
+                        </div>
+                    </div>
+                    <div id="success-message" class="sib-form-message-panel" style="font-family:'Roboto', Helvetica, sans-serif; font-size: 16px; text-align:left; color:#13ce66; background-color:rgba(19,206,102,0.1); border-color:#13ce66; border-radius:3px;">
+                        <div class="sib-form-message-panel_text sib-form-message-panel_text--center">
+                            <span class="sib-form-message-panel_inner-text">Votre inscription est confirmée.</span>
+                        </div>
+                    </div>
+                    <form id="sib-form" method="POST" action="https://73946c1f.sibforms.com/serve/MUIFAJNQzOpn_svTpZ_HaSeaerhoP-os6exc01_FejxBY6GzoisONCnDWLFIEWvBieXkykrC-IEsNVtY0T1ocr5pSAQqoR-9AgpvkcdOn5caw9EIkQF3Y4AHilfuivA_J7g1VNCtCJHETHtrpPIGjMzEplw_You_PHwGWj4obtyOVDpXoN9tLPyLsMATehyYMk3qipnDA==" data-type="subscription">
+                        <div style="padding: 8px 0;">
+                            <div class="sib-form-block" style="font-size:26px; font-weight:700; text-align:left;">
+                                <p>ACCÈS SYSTÈME // 01</p>
+                            </div>
+                        </div>
+                        <div style="padding: 8px 0;">
+                            <div class="sib-form-block" style="font-size:15px; text-align:left;">
+                                <div class="sib-text-form-block">
+                                    <p>Initialisez vos identifiants pour suivre les actualités du réseau.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Champ Email -->
+                        <div style="padding: 8px 0;">
+                            <div class="sib-input sib-form-block">
+                                <div class="form_entry entry_block">
+                                    <div class="form_label-row">
+                                        <label class="entry_label" style="font-weight: 700; text-align: left; font-size:14px;" for="EMAIL" data-required="*">Identifiant Email</label>
+                                        <div class="entry_field">
+                                            <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="name@domain.com" data-required="true" required />
+                                        </div>
+                                    </div>
+                                    <label class="entry_specification" style="font-size:12px; text-align:left;">Format requis: abc@xyz.com</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Champ Mot de Passe -->
+                        <div style="padding: 8px 0;">
+                            <div class="sib-input sib-form-block">
+                                <div class="form_entry entry_block">
+                                    <div class="form_label-row">
+                                        <label class="entry_label" style="font-weight: 700; text-align: left; font-size:14px;" for="PASSWORD" data-required="*">Mot de passe de sécurité</label>
+                                        <div class="entry_field">
+                                            <input class="input" type="password" id="PASSWORD" name="PASSWORD" autocomplete="new-password" placeholder="••••••••" data-required="true" required />
+                                        </div>
+                                    </div>
+                                    <label class="entry_specification" style="font-size:12px; text-align:left;">Utilisez un mot de passe fort et crypté.</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bouton de Validation -->
+                        <div style="padding: 12px 0;">
+                            <div class="sib-form-block" style="text-align: left">
+                                <button class="sib-form-block_button button-with-loader" style="font-size: 16px;" type="submit">S'INSCRIRE</button>
+                            </div>
+                        </div>
+                        <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none;">
+                        <input type="hidden" name="locale" value="fr">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Espace FAQ -->
+        <h2 class="section-title">Foire Aux Questions (FAQ)</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Par quoi devrais-je commencer en tant que débutant ? <span>+</span></div>
+                <div class="faq-answer">Le plus simple est d'identifier une compétence monétisable (freelance, conseil) pour générer du cash-flow rapidement, avant de basculer vers des business plus scalables comme les infoproduits ou le e-commerce.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Ai-je besoin d'un gros budget pour lancer mon site ? <span>+</span></div>
+                <div class="faq-answer">Non. Des solutions modernes et des tunnels de vente optimisés permettent de démarrer avec des coûts techniques très faibles, à condition d'investir du temps dans l'apprentissage stratégique.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Comment choisir la bonne niche ? <span>+</span></div>
+                <div class="faq-answer">Croisez vos passions et expertises avec un problème urgent et douloureux que des clients sont prêts à payer pour résoudre. C'est la base de la méthode PVU (Proposition de Valeur Unique).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE ARTICLES ================= -->
+    <div id="page-articles" class="page">
+        <div class="articles-container">
+            <h2 class="section-title" style="margin-top: 0;">Centre d'Articles & Ressources</h2>
+            
+            <!-- LISTE DES ARTICLES (Aperçu) -->
+            <div id="articles-list-view">
+                <!-- Article 1 -->
+                <div class="article-card-preview">
+                    <h2>L'Art du Freelance : Guide Stratégique & Templates</h2>
+                    <p class="article-excerpt">Le freelancing représente bien plus qu'une simple alternative au salariat : c'est l'opportunité de bâtir une véritable entreprise autour de votre expertise. Découvrez comment fixer votre TJM, trouver votre niche et acquérir vos premiers clients.</p>
+                    <button class="btn-read-more" onclick="openArticle(1)">Lire l'article complet</button>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card-preview">
+                    <h2>Comment gérer son business en créant un site web performant</h2>
+                    <p class="article-excerpt">Le site internet n'est plus une simple vitrine numérique : c'est le moteur central de votre entreprise en ligne 24h/24. Apprenez à structurer votre plateforme pour convertir et piloter votre activité.</p>
+                    <button class="btn-read-more" onclick="openArticle(2)">Lire l'article complet</button>
+                </div>
+            </div>
+
+            <!-- VUE DÉTAILLÉE ARTICLE 1 -->
+            <div id="article-detail-1" class="article-detail-view">
+                <button class="btn-back-list" onclick="closeArticle()">← Retour aux articles</button>
+                <h2 style="color: var(--neon-blue); margin-bottom: 20px;">L'Art du Freelance: Guide Stratégique & Templates</h2>
+                <div class="article-content">
+Le freelancing représente bien plus qu'une simple alternative au salariat: c'est l'opportunité de bâtir une véritable entreprise autour de votre expertise. Retrouvez ci-dessous un aperçu des piliers développés dans l'e-book complet :
+
+1. Trouver son Positionnement et sa Niche
+La règle d'or: Évitez de vous adresser à tout le monde. Plus votre offre est spécialisée, plus vous pouvez facturer cher en résolvant un problème critique pour un client précis.
+La méthode PVU (Proposition de Valeur Unique): Croisez vos compétences pointues, vos affinités professionnelles et la demande réelle du marché.
+
+2. Cadre Légal, Financier et Calcul du TJM
+Choix du statut: Comparatif détaillé entre la micro-entreprise (simplicité), le portage salarial (protection sociale et chômage) et la société (SASU/EURL pour les gros chiffres d'affaires).
+Définition du TJM (Taux Journalier Moyen): Ne calculez pas votre taux en divisant simplement un salaire net. Intégrez vos charges, vos cotisations, vos congés et vos 160-180 jours facturables réels par an.
+
+3. Stratégie d'Acquisition Client
+Diversification des canaux :
+- Le réseau et la recommandation (le canal le plus rentable).
+- Le personal branding sur LinkedIn (partage d'expertises et de cas pratiques).
+- Les plateformes spécialisées pour démarrer (Malt, Upwork).
+- La prospection ciblée (cold outreach).
+
+4. Templates Pratiques Inclus dans l'E-book
+L'e-book intègre des modèles prêts à l'emploi :
+- Template 1: Le Brief Client Structuré (Objectifs, cible, livrables, calendrier et budget).
+- Template 2: L'E-mail de Relance Prospect (Professionnel, poli et orienté conversion).
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://wixbnslt.mychariow.shop/prd_0xfup0yv" target="_blank" class="btn-download-pdf">Clique et télécharger le pdf pour approfondir ton apprentissage</a>
+                </div>
+            </div>
+
+            <!-- VUE DÉTAILLÉE ARTICLE 2 -->
+            <div id="article-detail-2" class="article-detail-view">
+                <button class="btn-back-list" onclick="closeArticle()">← Retour aux articles</button>
+                <h2 style="color: var(--neon-blue); margin-bottom: 20px;">Comment gérer son business en créant un site web performant</h2>
+                <div class="article-content">
+Le site internet n'est plus une simple vitrine numérique : c'est le moteur central de votre entreprise en ligne. Que vous vendiez des produits physiques, des formations, des infoproduits ou des services en freelance, votre site travaille pour vous 24h/24.
+
+Voici les étapes clés pour piloter votre activité grâce à un site web :
+
+1. Clarifier son modèle économique avant de coder
+Avant de choisir un outil, définissez précisément ce que vous vendez :
+- E-commerce: Vente de biens physiques (gestion des stocks et logistique).
+- Infoproduits / Formations: Vente de contenu dématérialisé (cours en ligne, ebooks, abonnements).
+- Services / Consulting: Vitrine professionnelle axée sur l'expertise et la prise de rendez-vous.
+
+2. Choisir la bonne plateforme technique
+Adaptez l'outil à votre niveau et à vos objectifs :
+- WordPress + WooCommerce: Idéal pour une flexibilité totale et un référencement naturel (SEO) puissant.
+- Shopify: La référence absolue pour le e-commerce pur grâce à sa stabilité et ses paiements intégrés.
+- Chariow ou Systeme.io: Parfait pour les créateurs d'infoproduits et les tunnels de vente ultra-rapides en Afrique et à l'international.
+
+3. Structurer son site pour convertir
+Un beau site qui ne convertit pas ne sert à rien. Votre architecture doit répondre à une logique commerciale :
+- Une page d'accueil claire: En moins de 3 secondes, le visiteur doit comprendre votre proposition de valeur.
+- Des pages de vente orientées bénéfices: Mettez en avant les problèmes que vous résolvez pour vos clients, étayés par des avis et des témoignages.
+- Un tunnel de paiement fluide: Réduisez au maximum le nombre de champs à remplir pour éviter les abandons de panier.
+
+4. Piloter l'activité avec les bons indicateurs (KPI)
+Gérer son business, c'est analyser les chiffres pour prendre les bonnes décisions :
+- Suivez régulièrement votre trafic (provenance et volume).
+- Analysez votre taux de conversion (pourcentage de visiteurs qui achètent ou s'inscrivent).
+- Calculez votre coût d'acquisition client pour rentabiliser vos efforts marketing.
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://wixbnslt.mychariow.shop/prd_gjhbqwd0" target="_blank" class="btn-download-pdf">Clique et télécharger le pdf pour approfondir ton apprentissage</a>
+                </div>
+            </div>
+
+            <!-- Espace Formulaire Brevo (Articles) -->
+            <div style="margin-top: 60px;">
+                <div class="sib-form" style="text-align: center;">
+                    <div id="sib-form-container-2" class="sib-form-container" style="max-width: 540px;">
+                        <form id="sib-form-2" method="POST" action="https://73946c1f.sibforms.com/serve/MUIFAJNQzOpn_svTpZ_HaSeaerhoP-os6exc01_FejxBY6GzoisONCnDWLFIEWvBieXkykrC-IEsNVtY0T1ocr5pSAQqoR-9AgpvkcdOn5caw9EIkQF3Y4AHilfuivA_J7g1VNCtCJHETHtrpPIGjMzEplw_You_PHwGWj4obtyOVDpXoN9tLPyLsMATehyYMk3qipnDA==" data-type="subscription">
+                            <div style="padding: 8px 0;">
+                                <div class="sib-form-block" style="font-size:24px; font-weight:700; text-align:left;">
+                                    <p>RESTONS CONNECTÉS // NEWSLETTER</p>
+                                </div>
+                            </div>
+                            <div style="padding: 8px 0;">
+                                <div class="sib-input sib-form-block">
+                                    <div class="form_entry entry_block">
+                                        <div class="form_label-row">
+                                            <label class="entry_label" style="font-weight: 700; text-align: left; font-size:14px;" for="EMAIL2" data-required="*">Identifiant Email</label>
+                                            <div class="entry_field">
+                                                <input class="input" type="text" id="EMAIL2" name="EMAIL" autocomplete="off" placeholder="name@domain.com" data-required="true" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 8px 0;">
+                                <div class="sib-input sib-form-block">
+                                    <div class="form_entry entry_block">
+                                        <div class="form_label-row">
+                                            <label class="entry_label" style="font-weight: 700; text-align: left; font-size:14px;" for="PASSWORD2" data-required="*">Mot de passe de sécurité</label>
+                                            <div class="entry_field">
+                                                <input class="input" type="password" id="PASSWORD2" name="PASSWORD" autocomplete="new-password" placeholder="••••••••" data-required="true" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 12px 0;">
+                                <div class="sib-form-block" style="text-align: left">
+                                    <button class="sib-form-block_button button-with-loader" style="font-size: 16px;" type="submit">S'INSCRIRE AUX ACTUALITÉS</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= PAGE À PROPOS ================= -->
+    <div id="page-apropos" class="page">
+        <div class="about-container">
+            <h2>À Propos de Nexus Business</h2>
+            <p>Bienvenue dans votre écosystème dédié à l'émancipation financière et au développement de structures en ligne performantes. Notre mission est de démystifier les méthodes de pointe du web-marketing, du freelancing et de l'e-commerce.</p>
+            <p>Fondé pour accompagner les entrepreneurs ambitieux, ce portail met l'accent sur l'action mesurée, l'optimisation des tunnels de vente et la maîtrise des outils digitaux modernes (Chariow, Brevo, automatisation).</p>
+            <p>Que vous partiez de zéro ou que vous cherchiez à scaler votre structure existante, vous trouverez ici les guides, formations et ressources nécessaires pour passer au niveau supérieur.</p>
+        </div>
+    </div>
+
+    <!-- MODAL CONTACT & RÉSEAUX -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3>Canaux & Réseaux Officiels</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Connectez-vous directement avec nos plateformes :</p>
+            
+            <div class="social-links-list">
+                <a href="https://wa.me/237699243645" target="_blank" class="social-btn">💬 WhatsApp : 699 243 645</a>
+                <a href="https://www.facebook.com/profile.php?id=61586873806107" target="_blank" class="social-btn">📘 Facebook Officiel</a>
+                <a href="https://youtube.com/@davidpougop?si=5wca-0stm3JJn71k" target="_blank" class="social-btn">📺 YouTube : @davidpougop</a>
+                <a href="https://www.tiktok.com/@davidpougop" target="_blank" class="social-btn">🎵 TikTok Officiel</a>
+                <a href="https://pin.it/5mpJdqmzm" target="_blank" class="social-btn">ピン Pinterest Profil</a>
+                <a href="https://wixbnslt.mychariow.shop" target="_blank" class="social-btn">🛒 Boutique Chariow</a>
+                <a href="https://www.linkedin.com/in/david-pougop-20b874420?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-btn">💼 LinkedIn : David Pougop</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Nexus Business. Tous droits réservés. Design Futuriste & Hi-Tech.</p>
+    </footer>
+
+    <!-- Scripts JavaScript pour la navigation et l'interactivité -->
+    <script>
+        // Gestion de la navigation entre les pages
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.getElementById('link-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gestion de l'affichage des articles détaillés
+        function openArticle(articleNum) {
+            document.getElementById('articles-list-view').style.display = 'none';
+            document.querySelectorAll('.article-detail-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById('article-detail-' + articleNum).classList.add('active');
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+
+        function closeArticle() {
+            document.querySelectorAll('.article-detail-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById('articles-list-view').style.display = 'block';
+        }
+
+        // Accordéon FAQ
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const symbol = element.querySelector('span');
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                symbol.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                symbol.textContent = '-';
+            }
+        }
+
+        // Modal Contact
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contact-modal').classList.remove('active');
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('contact-modal');
+            if (event.target === modal) {
+                closeContactModal();
+            }
+        }
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+</body>
+</html>
